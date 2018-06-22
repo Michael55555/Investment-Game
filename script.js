@@ -27,12 +27,17 @@ var model = {
 
 var itemsView = {
   init: () => {
-    this.itemElem = document.getElementById('item-items');
+    this.mainElem = document.getElementById('item');
     this.moneyElem = document.getElementById('money');
+    this.tableElem = document.getElementById('item-table')
     let item;
     let items = octopus.getItems();
     for (let i in items) {
       item = items[i];
+      this.itemElem = document.createElement('tr');
+      this.nameElem = document.createElement('td');
+      this.priceElem = document.createElement('td');
+      this.actionElem = document.createElement('td');
       this.buyItemElem = document.createElement('button');
       this.sellItemElem = document.createElement('button');
       this.itemPriceElem = document.createElement('div');
@@ -44,10 +49,14 @@ var itemsView = {
       this.buyItemElem.innerHTML = 'Buy';
       this.itemPriceElem.innerHTML = item.price;
       this.itemNameElem.innerHTML = item.name;
-      this.itemElem.appendChild(this.buyItemElem);
-      this.itemElem.appendChild(this.sellItemElem);
-      this.itemElem.appendChild(this.itemNameElem);
-      this.itemElem.appendChild(this.itemPriceElem);
+      this.actionElem.appendChild(this.buyItemElem);
+      this.actionElem.appendChild(this.sellItemElem);
+      this.nameElem.appendChild(this.itemNameElem);
+      this.priceElem.appendChild(this.itemPriceElem);
+      this.itemElem.appendChild(this.nameElem);
+      this.itemElem.appendChild(this.priceElem);
+      this.itemElem.appendChild(this.actionElem);
+      this.tableElem.appendChild(this.itemElem);
       itemsView.render();
       this.buyItemElem.addEventListener('click', () => {
         octopus.buyItem(item.name);
@@ -62,7 +71,7 @@ var itemsView = {
       acc.addEventListener("click", () => {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
+        if (panel.style.display === 'block') {
           panel.style.display = "none";
         } else {
           panel.style.display = "block";
@@ -71,11 +80,11 @@ var itemsView = {
     }
   },
   render: () => {
-    /*this.moneyElem.innerHTML = 'Money: ' + model.money;
-    for(let i in model.items){
+    this.moneyElem.innerHTML = 'Money: ' + model.money;
+    for (let i in model.items) {
       this.itemPriceElem.innerHTML = model.items[i].price + '€';
       this.itemNameElem.innerHTML = model.items[i].name;
-    }*/
+    }
   }
 };
 
