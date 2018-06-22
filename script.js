@@ -1,117 +1,173 @@
-var cship = chouse = ccar = cbike = 0;
-var pship = 10, phouse = 5, pcar = 3, pbike = 1, cmoney = 10;
-var id = ["money","ship","house","car","bike", "bship", "bhouse", "bcar", "bbike"];
-onload = function (){
-
-    for(var stp = 0; stp < id.length; stp++){
-        id[stp] = document.getElementById(id[stp]);
+var model = {
+  currentItem: null,
+  money: 10,
+  items: [
+    {
+      name: 'ship',
+      price: 10,
+      number: 0
+    },
+    {
+      name: 'house',
+      price: 5,
+      number: 0
+    },
+    {
+      name: 'car',
+      price: 3,
+      number: 0
+    },
+    {
+      name: 'bike',
+      price: 1,
+      number: 0
     }
+  ]
+};
 
-    setInterval(function(){
-       money.innerHTML = 'Money: ' + cmoney;
-       house.innerHTML = 'House: ' + chouse;
-       ship.innerHTML = 'Ship: ' + cship;
-       car.innerHTML = 'Car: ' + ccar;
-       bike.innerHTML = 'Bike: ' + cbike;
-    });
-
-    setInterval(function(){
-        if(pship>5){pship += random(-2, 2);}else{
-            pship += random(0, 2)
+var itemsView = {
+  init: () => {
+    this.itemElem = document.getElementById('item-items');
+    this.moneyElem = document.getElementById('money');
+    let item;
+    let items = octopus.getItems();
+    for (let i in items) {
+      item = items[i];
+      this.buyItemElem = document.createElement('button');
+      this.sellItemElem = document.createElement('button');
+      this.itemPriceElem = document.createElement('div');
+      this.itemNameElem = document.createElement('div');
+      this.buyItemElem.classList.add(['primary'], ['panel']);
+      this.sellItemElem.classList.add(['danger'], ['panel']);
+      this.itemNameElem.classList.add('name');
+      this.sellItemElem.innerHTML = 'Sell';
+      this.buyItemElem.innerHTML = 'Buy';
+      this.itemPriceElem.innerHTML = item.price;
+      this.itemNameElem.innerHTML = item.name;
+      this.itemElem.appendChild(this.buyItemElem);
+      this.itemElem.appendChild(this.sellItemElem);
+      this.itemElem.appendChild(this.itemNameElem);
+      this.itemElem.appendChild(this.itemPriceElem);
+      itemsView.render();
+      this.buyItemElem.addEventListener('click', () => {
+        octopus.buyItem(item.name);
+        itemsView.render();
+      });
+      this.sellItemElem.addEventListener('click', () => {
+        octopus.sellItem();
+        itemsView.render();
+      });
+      let acc;
+      acc = document.createElement('div');
+      acc.addEventListener("click", () => {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
         }
-        bship.innerHTML = "Buy Ship for " + pship + "$";
-    }, 1000);
-}
-
-function mone(){
-    alert("You havent enough money");
-}
-
-function buyShip(){
-    if((cmoney - pship) >= 0){
-        cmoney -= pship;
-        cship++;
-    } else {
-        mone();
+      });
     }
-}
+  },
+  render: () => {
+    /*this.moneyElem.innerHTML = 'Money: ' + model.money;
+    for(let i in model.items){
+      this.itemPriceElem.innerHTML = model.items[i].price + '€';
+      this.itemNameElem.innerHTML = model.items[i].name;
+    }*/
+  }
+};
 
-function sellShip(){
-    if(cship > 0){
-        cmoney += pship;
-        cship--;
-        alert("Ship sold for: " + pship)
-    } else {
-        alert("You havent a ship to sell")
+var inventoryView = {
+  init: () => {
+    this.itemsCount = document.getElementById('items');
+    inventoryView.render();
+  },
+  render: () => {
+    let item;
+    let items = octopus.getItems();
+    this.itemsCount.innerHTML = '';
+    for (let i in items) {
+      item = items[i];
+      var elem = document.createElement('li');
+      elem.innerHTML = item.name + ': ' + item.number + '<br>';
+      this.itemsCount.appendChild(elem);
     }
-}
+  }
+};
 
-function buyHouse(){
-    if((cmoney - phouse) >= 0){
-        cmoney -= phouse;
-        chouse++;
+var octopus = {
+  init: () => {
+    model.currentItem = model.items[0];
+    itemsView.init();
+    inventoryView.init();
+    octopus.itemPrice();
+  },
+  getItems: () => {
+    return model.items;
+  },
+  getCurrentItem: () => {
+    return model.currentItem;
+  },
+  setCurrentItem: item => {
+    model.currentItem = item;
+  },
+  buyItem: () => {
+    var item = octopus.getCurrentItem();
+    if (model.money - item.price >= 0) {
+      model.money -= item.price;
+      item.number++;
+      inventoryView.render();
+      let sound = new Audio();
+      sound.src = 'https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-18146/zapsplat_foley_money_coins_handful_drop_onto_wood_002_18981.mp3?_=10';
+      sound.play();
     } else {
-        mone();
+      alert('You havent enough money!');
     }
-}
-
-function sellHouse(){
-    if(chouse > 0){
-        cmoney += phouse;
-        chouse--;
-        alert("House sold for: " + phouse)
+  },
+  sellItem: () => {
+    var item = octopus.getCurrentItem();
+    if (item.number > 0) {
+      item.number--;
+      model.money += item.price;
+      inventoryView.render();
+      let sound = new Audio();
+      sound.src = 'https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-18146/zapsplat_foley_money_coins_tip_out_of_metal_tin_onto_carpet_002_18996.mp3?_=9';
+      sound.play();
     } else {
-        alert("You havent a house to sell")
+      alert('Have nothing to sell!');
     }
-}
-
-function buyCar(){
-    if((cmoney - pcar) >= 0){
-        cmoney -= pcar;
-        ccar++;
-    } else {
-        mone();
-    }
-}
-
-function sellCar(){
-    if(ccar > 0){
-        cmoney += pcar;
-        ccar--;
-        alert("Car sold for: " + pcar);
-    } else {
-        alert("You havent a car to sell");
-    }
-}
-
-function buyBike(){
-    if((cmoney - pbike) >= 0){
-        cmoney -= pbike;
-        cbike++;
-    } else {
-        mone();
-    }
-}
-
-function sellBike(){
-    if(cbike > 0){
-        cmoney += pbike;
-        cbike--;
-        alert("Bike sold for: " + pbike);
-    } else {
-        alert("You havent a bike to sell");
-    }
-}
-
-function random(from, to, rounded) {
+  },
+  itemPrice: () => {
+    setInterval(function () {
+      for (let i in model.items) {
+        if (model.items[i].price > 1) {
+          model.items[i].price += octopus.random(-2, 2);
+        } else {
+          model.items[i].price += octopus.random(0, 2);
+        }
+        itemsView.render();
+      }
+    }, 500);
+  },
+  random: (from, to, rounded) => {
     if (from === undefined) {
-        return "#" + ((Math.random() * 16777215) | 0).toString(16);
+      return '#' + ((Math.random() * 16777215) | 0).toString(16);
     } else {
-        to = to === undefined ? from : to;
-        from = from == to ? 0 : from;
-        var tmp = [Math.min(from, to), Math.max(from, to)];
-        from = tmp[0];
-        to = tmp[1];
-        return !rounded ? (Math.random() * (to - from) + from) | 0 : (Math.random() * (to - from) + from);
+      to = to === undefined ? from : to;
+      from = from == to ? 0 : from;
+      const TMP = [
+        Math.min(from, to),
+        Math.max(from, to)
+      ];
+      from = TMP[0];
+      to = TMP[1];
+      return !rounded ? (Math.random() * (to - from) + from) | 0 : (Math.random() * (to - from) + from);
     }
+  }
+};
+
+onload = () => {
+  octopus.init();
 }

@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Investment Game</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <p id="money">Money: 0</p>
-        <button id=bship onclick="buyShip()">Buy Ship for 10$</button>
-        <button id=bhouse onclick="buyHouse()">Buy House</button>
-        <button id=bcar onclick="buyCar()">Buy Car</button>
-        <button id=bbike onclick="buyBike()">Buy Bike</button>
-        <p id="ship">Ship: 0</p>
-        <p id="house">House: 0</p>
-        <p id="car">Car: 0</p>
-        <p id="bike">Bike: 0</p>
-        <button onclick="sellShip()">Sell Ship</button>
-        <button onclick="sellHouse()">Sell House</button>
-        <button onclick="sellCar()">Sell Car</button>
-        <button onclick="sellBike()">Sell Bike</button>
-    </body>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.min.css">
+<p id="money" class=card></p>
+<div class=card id=item>
+  <h2>Items</h2>
+  <ul id=item-items></ul>
+</div>
+<div class=card>
+  <h2>Inventory</h2>
+  <ul id=items></ul>
+</div>
+<div class=card>
+  <h2>Transactions</h2>
+  <p>Hello</p>
+</div>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class=card>
+  <h2>Accordion</h2>
+  <button class="accordion">Section 1</button>
+  <div class="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <button class="accordion">Section 2</button>
+  <div class="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button class="accordion">Section 3</button>
+  <div class="panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</div>
+</body>
+
 </html>
