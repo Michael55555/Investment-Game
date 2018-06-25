@@ -1,113 +1,199 @@
 /* My Style Library */
+
 @font-face {
-    font-family: 'Google Display Font';
-    src: url('https://fonts.gstatic.com/s/googlesansdisplay/v5/ea8FacM9Wef3EJPWRrHjgE4B6CnlZxHVDv79pw.woff') format('woff');
-  }
-  
-  body {
-    padding:0;
-    margin:0;
-    font-family: 'Google Display Font';
-  }
-  
-  .name {
-    text-transform: uppercase;
-  }
-  .price {
-    font-weight: 400;
-    font-size: 40px;
-  }
-  
-  #items {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 0;
-    height: 80px;
-  }
-  
-  li {
-    list-style:none;
-    font-weight: 500;
-  }
-  
-  .top {
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 0 5px rgba(0,0,0,50%);
-    text-transform: uppercase;
-  }
-  
-  ul {
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 50px;
-    align-items:center;
-  }
-  .card {
-    border: solid lightgrey 1px;
-    margin:10px;
-    border-radius:10px;
-    padding: 10px;
-    width: 350px;
-  }
-  
-  button {
-    width: 100px;
-    height: 35px;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    color: white;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
-  p {
-    padding: 0;
-    margin: 0;
-  }
-  
-  h2 {
-    margin: 0;
-    padding-bottom: 5px;
-  }
-  
-  .primary {
-    background-color: #2E86C1;
-  }
-  
-  .danger {
-    background-color: #FF5555;
-  }
-  .item {
-    height: 100px;
-    padding:0;
-  }
-  /*
-  .accordion {
-      background-color: #eee;
-      color: #444;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      transition: 0.4s;
-  }
-  
-  .active, .accordion:hover {
-      background-color: #ccc; 
-  }
-  
-  .panel {
-      padding: 0 18px;
-      display: none;
-      background-color: white;
-      overflow: hidden;
-  }*/
+  font-family: 'Google Display Font';
+  src: url('https://fonts.gstatic.com/s/googlesansdisplay/v5/ea8FacM9Wef3EJPWRrHjgE4B6CnlZxHVDv79pw.woff') format('woff');
+  color: #263238;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Google Display Font';
+  margin: 0;
+  padding: 0;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+#items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0;
+  height: 80px;
+  position: fixed;
+}
+
+#money {
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 160px;
+  color: white;
+}
+
+#top {
+  align-items: stretch;
+  background-color: #FFD740;
+  display: flex;
+  height: 40px;
+  justify-content: stretch;
+  margin: 0 0 20px 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  font-weight: 700;
+}
+
+.top-name {
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 50%);
+  border-radius: 0 0 10px 0;
+  display: flex;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  width: 200px;
+  z-index: 10;
+}
+
+table {
+  border: none;
+  border-radius: 10px;
+}
+
+li {
+  background-color: #ECEFF1;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  list-style: none;
+  margin: 2px;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #FFF8E1;
+}
+
+tr {
+  text-align: center;
+}
+
+td {
+  margin: 0;
+  padding: 0;
+}
+
+tr {
+  border-radius: 10px;
+}
+
+.price {
+  width: 55px;
+}
+
+.card {
+  border: solid lightgrey 1px;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 315px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  height: 35px;
+  margin: 5px;
+  width: 50px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.primary {
+  background-color: #FFD740;
+}
+
+.secondary {
+  background-color: #263238;
+}
+
+.secondary:active {
+  background-color: #37474F;
+}
+
+.secondary:hover {
+  outline: none;
+}
+
+.item {
+  height: 100px;
+  padding: 0;
+}
+
+.actions {
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+}
+
+.buy {
+  background-color: #FFD740;
+}
+
+.sell {
+  background-color: #263238;
+}
+
+#transactions {
+  display: flex;
+  flex-direction: column;
+}
+
+#transaction-list {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 160px;
+  height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #FFD740;
+  border-radius: 10px;
+}
