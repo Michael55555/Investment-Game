@@ -1,0 +1,205 @@
+/* My Style Library */
+
+@font-face {
+    font-family: 'Google Display Font';
+    src: url('https://fonts.gstatic.com/s/googlesansdisplay/v5/ea8FacM9Wef3EJPWRrHjgE4B6CnlZxHVDv79pw.woff') format('woff');
+    color: #263238;
+  }
+  
+  body {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Google Display Font';
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .name {
+    text-transform: capitalize;
+  }
+  
+  #items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0;
+    height: 80px;
+    position: fixed;
+  }
+  
+  #money {
+    background-color: transparent;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    width: 160px;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  #top {
+    align-items: stretch;
+    background-color: #FFD740;
+    display: flex;
+    height: 40px;
+    justify-content: stretch;
+    margin: 0 0 20px 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    font-weight: 700;
+  }
+  
+  .top-name {
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 50%);
+    border-radius: 0 0 10px 0;
+    display: flex;
+    font-weight: 700;
+    height: 40px;
+    justify-content: center;
+    width: 200px;
+    z-index: 10;
+  }
+  
+  table {
+    border: none;
+    border-radius: 10px;
+  }
+  
+  li {
+    background-color: #ECEFF1;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    list-style: none;
+    margin: 2px;
+    padding: 10px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #FFF8E1;
+  }
+  
+  tr {
+    text-align: center;
+  }
+  
+  td {
+    margin: 0;
+    padding: 0;
+  }
+  
+  tr {
+    border-radius: 10px;
+  }
+  
+  .price {
+    width: 55px;
+  }
+  
+  .card {
+    align-items: stretch;
+    border: solid lightgrey 1px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    width: 315px;
+  }
+  
+  button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    height: 35px;
+    margin: 5px;
+    width: 50px;
+  }
+  
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    margin: 0;
+    padding-bottom: 5px;
+  }
+  
+  .primary {
+    background-color: #FFD740;
+  }
+  
+  .secondary {
+    background-color: #263238;
+  }
+  
+  .secondary:active {
+    background-color: #37474F;
+  }
+  
+  .secondary:hover {
+    outline: none;
+  }
+  
+  .item {
+    height: 100px;
+    padding: 0;
+  }
+  
+  .actions {
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+  }
+  
+  .buy {
+    background-color: #FFD740;
+  }
+  
+  .sell {
+    background-color: #263238;
+  }
+  
+  #transactions {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #transaction-list {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 160px;
+    height: 20px;
+  }
+  
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+  }
+  
+  progress[value]::-webkit-progress-value {
+    background-color: #FFD740;
+    border-radius: 10px;
+  }
