@@ -1,16 +1,8 @@
-/* My Style Library */
-
-@font-face {
-    font-family: 'Google Display Font';
-    src: url('https://fonts.gstatic.com/s/googlesansdisplay/v5/ea8FacM9Wef3EJPWRrHjgE4B6CnlZxHVDv79pw.woff') format('woff');
-    color: #263238;
-  }
-  
   body {
     align-items: flex-start;
     display: flex;
     flex-direction: row;
-    font-family: 'Google Display Font';
+    font-family: 'Poppins', 'Montserrat', 'Roboto', 'Arial';
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 0;
